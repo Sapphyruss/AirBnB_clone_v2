@@ -3,7 +3,7 @@
 from os.path import exists
 from fabric.api import env, run, put, task
 
-env.hosts = ["100.25.111.125", "34.207.190.218"]
+env.hosts = ["100.25.110.120", "34.207.178.181"]
 env.user = "ubuntu"
 # archive_path = "versions/web_static_20231004205451.tgz"
 
