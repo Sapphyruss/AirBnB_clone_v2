@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Create a new engine"""
+"""Create a new db engine"""
 from os import getenv
 from models.base_model import Base, BaseModel
 from models.city import City
@@ -32,10 +32,10 @@ class DBStorage:
         """query the database session
 
         Args:
-            cls (class, optional): class to be queried. Defaults to None.
+            cls : class to be queried. Defaults to None.
 
         Returns:
-            dict: the queried class
+            dict: the query class
         """
         if cls is None:
             classes = [City, User, Place, Review, Amenity]
@@ -52,7 +52,7 @@ class DBStorage:
         """Add obj to the database
 
         Args:
-            obj (object): object to be added
+            obj : object to be added
         """
         self.__session.add(obj)
 
@@ -64,7 +64,8 @@ class DBStorage:
         """Delete an object from the database
 
         Args:
-            obj (object, optional): object to be deleted. Defaults to None.
+            obj : object to be deleted
+            Defaults to None.
         """
         if obj is not None:
             self.__session.delete(obj)
@@ -78,5 +79,5 @@ class DBStorage:
         self.__session = start_session()
 
     def close(self):
-        """closes the working session"""
+        """closes the current session"""
         self.__session.close()
