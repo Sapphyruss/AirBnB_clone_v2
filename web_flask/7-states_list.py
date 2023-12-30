@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Fetch data from the storage engine"""
+"""Fetching data from the storage engine"""
 from flask import Flask, render_template
 from models import storage
 from models.state import State
@@ -9,13 +9,13 @@ app.url_map.strict_slashes = False
 
 @app.teardown_appcontext
 def end_session(exception):
-
+    """remove the current SQLAlchemy"""
     storage.close()
 
 
 @app.route("/states_list", strict_slashes=False)
 def List_of_states():
-
+    """display the HTML page"""
     states = storage.all(State)
     return render_template("7-states_list.html", states=states)
 
