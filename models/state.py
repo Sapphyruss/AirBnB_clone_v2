@@ -8,7 +8,7 @@ from os import getenv
 
 
 class State(BaseModel, Base):
-
+    """ Class State """
     __tablename__ = "states"
     name = Column(String(128), nullable=False)
     cities = relationship("City", backref="state", cascade="all, delete")
@@ -16,6 +16,7 @@ class State(BaseModel, Base):
     if getenv("HBNB_TYPE_STORAGE", None) != "db":
         @property
         def cities(self):
+            """Get a list of the related City objects."""
             from models import storage
             cities_list = []
             for city in storage.all(City).values():
